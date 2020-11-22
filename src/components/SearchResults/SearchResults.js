@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { AddFavorite } from '../../Api'
 
 import "./SearchResults.styles.css"
 
@@ -6,7 +7,14 @@ const SearchResults = ({results}) => {
   const handleClick = (event) => {
     const resultId = event.target.parentElement.id
     const savedResult = results.definitions[resultId]
-    // TODO make api call
+    console.log(savedResult);
+    AddFavorite(savedResult)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   const renderResults = () => {

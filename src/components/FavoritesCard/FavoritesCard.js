@@ -1,9 +1,11 @@
 import "./FavoritesCard.styles.css"
 
-const FavoritesCard = () => {
+const FavoritesCard = ({ data }) => {
   return (
-    <div>
-      <p>CARD</p>
+    <div className="card-container">
+      <p>Type: {data.type}</p>
+      <p>Definition: {data.definition}</p>
+      <p>Example: {data.example}</p>
     </div>
   );
 }

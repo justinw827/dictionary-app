@@ -1,10 +1,15 @@
 import FavoritesCard from '../FavoritesCard/FavoritesCard';
 import "./FavoritesList.styles.css"
 
-const FavoritesList = () => {
+const FavoritesList = ({ favorites }) => {
+  const renderFavorites = () => {
+    return favorites.map(favorite => (
+      <FavoritesCard data={favorite} />
+    ))
+  }
   return (
     <div>
-      <FavoritesCard />
+      {renderFavorites()}
     </div>
   );
 }
