@@ -6,10 +6,10 @@ const SearchResults = ({results}) => {
   const handleClick = (event) => {
     const resultId = event.target.parentElement.id
     const savedResult = results.definitions[resultId]
+    // TODO make api call
   }
 
   const renderResults = () => {
-    // console.log(results);
     let count = 0;
     return results.definitions?.map(result => {
       count++

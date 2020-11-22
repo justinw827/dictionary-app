@@ -13,6 +13,9 @@ const SearchBar = ({ setResults, setIsLoading }) => {
         setResults(response)
         setIsLoading(false)
       })
+      .catch(() => {
+        //TODO handle error
+      })
   }
 
   const handleChange = (event) => {
@@ -26,9 +29,9 @@ const SearchBar = ({ setResults, setIsLoading }) => {
           value={searchTerm}
           onChange={handleChange}
           placeholder='Search Dictionary'
-          id="search-bar"
+          className="search-bar"
         />
-        <button>Search</button>
+        <button className="search-button" >Search</button>
       </form>
     </div>
   );
