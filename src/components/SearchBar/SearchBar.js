@@ -14,7 +14,6 @@ const SearchBar = ({ setResults, setIsLoading }) => {
         setIsLoading(false)
       })
       .catch(error => {
-        // TODO
         console.log(error);
       })
   }

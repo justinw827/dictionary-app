@@ -8,6 +8,7 @@ const FavoritesPage = () => {
   const [favorites, setFavorites] = useState([])
   const [filteredFavorites, setFilteredFavorites] = useState([])
   const [filter, setFilter] = useState("none")
+  const [message, setMessage] = useState("")
 
   useEffect(() => {
     GetFavorites()
@@ -35,9 +36,10 @@ const FavoritesPage = () => {
     }
 
   return (
-    <div>
+    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
       <Dropdown filter={filter} handleFilterChange={handleFilterChange} types={getTypes()} />
-      <FavoritesList favorites={filteredFavorites} />
+      {message.length > 0 && <p>{message}</p>}
+      <FavoritesList favorites={filteredFavorites} setMessage={setMessage} />
     </div>
   );
 }

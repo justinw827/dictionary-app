@@ -3,7 +3,6 @@ import axios from 'axios'
 const OWLBOT_URL = 'https://owlbot.info/api/v4/dictionary'
 const BACKEND_URL = 'http://localhost:8000'
 
-
 export const GetSearchResult = async (term) => {
   const response = await axios.get(`${OWLBOT_URL}/${term}`, {
     headers: {
@@ -24,6 +23,20 @@ export const AddFavorite = async (newFavorite) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
+            }
+        })
+
+  return response
+}
+
+export const DeleteFavorite = async (favoriteId) => {
+  const response = await axios.delete(`${BACKEND_URL}/favorites`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            data: {
+              id: favoriteId
             }
         })
 

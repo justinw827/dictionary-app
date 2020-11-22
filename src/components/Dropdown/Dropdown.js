@@ -4,7 +4,7 @@ const Dropdown = ({ filter, handleFilterChange, types=[] }) => {
   }
 
   return (
-    <select value={filter} onChange={handleFilterChange}>
+    <select style={{width: "100px", margin:"10px"}} value={filter} onChange={handleFilterChange}>
       <option value="none">none</option>
       {renderOptions()}
     </select>

@@ -4,13 +4,15 @@ import { AddFavorite } from '../../Api'
 import "./SearchResults.styles.css"
 
 const SearchResults = ({results}) => {
+  const [message, setMessage] = useState("")
   const handleClick = (event) => {
     const resultId = event.target.parentElement.id
-    const savedResult = results.definitions[resultId]
-    console.log(savedResult);
+    const savedResult = {word: results.word, ...results.definitions[resultId]}
     AddFavorite(savedResult)
       .then(response => {
-        console.log(response);
+        if (response.status === 200) {
+          setMessage("Successfully favorited word")
+        }
       })
       .catch(error => {
         console.log(error);
@@ -36,6 +38,7 @@ const SearchResults = ({results}) => {
   return (
     <div className="results-container">
       <h1>Results</h1>
+      {message.length > 0 && <p>{message}</p>}
       <div className="results-list">
         {renderResults()}
       </div>
