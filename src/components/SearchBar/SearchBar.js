@@ -4,18 +4,27 @@ import "./SearchBar.styles.css"
 
 const SearchBar = ({ setResults, setIsLoading }) => {
   const [searchTerm, setSearchTerm] = useState("")
+  const [message, setMessage] = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setIsLoading(true)
-    GetSearchResult(searchTerm)
-      .then(response => {
-        setResults(response)
-        setIsLoading(false)
-      })
-      .catch(error => {
-        console.log(error);
-      })
+    if (searchTerm.length > 0) {
+      setIsLoading(true)
+      GetSearchResult(searchTerm)
+        .then(response => {
+          setResults(response)
+          setIsLoading(false)
+          setMessage("")
+        })
+        .catch(error => {
+          if (error.response.status === 404) {
+            setMessage(`${searchTerm} was not found`)
+          }
+          setIsLoading(false)
+        })
+    } else {
+      setMessage("Field can't be empty")
+    }
   }
 
   const handleChange = (event) => {
@@ -33,6 +42,7 @@ const SearchBar = ({ setResults, setIsLoading }) => {
         />
         <button className="search-button" >Search</button>
       </form>
+      {message.length > 0 && <p>{message}</p>}
     </div>
   );
 }
