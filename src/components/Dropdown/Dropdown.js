@@ -1,7 +1,7 @@
 const Dropdown = ({ filter, handleFilterChange, types=[] }) => {
   const renderOptions = () => {
     const typesUnique = new Set(types)
-    return [...typesUnique].map(type => <option value={type}>{type}</option>)
+    return [...typesUnique].map(type => <option key={type} value={type}>{type}</option>)
   }
 
   return (

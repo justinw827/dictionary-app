@@ -24,6 +24,10 @@ const FavoritesCard = ({ data, setMessage }) => {
       <p>Type: {data.type}</p>
       <p>Definition: {data.definition}</p>
       <p>Example: {data.example}</p>
+      <div>
+        <p>Image: </p>
+        <img src={`$data.image-url`} alt="n/a"/>
+      </div>
       <button onClick={handleUnfavorite}>Unfavorite</button>
     </div>
   );
